@@ -4,7 +4,7 @@ const Student = require("../models/student");
 const mongoose = require("mongoose");
 
 router.get("/faculty", (req, res) => {
-  Student.find(req.params.phone).then((result) => {
+  Student.find().then((result) => {
     res.status(200).json({
       studentData: result,
     });

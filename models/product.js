@@ -3,6 +3,7 @@ const Product= new mongoose.Schema({
     imageLink:{
         type:String,
         required:true,
+        unique:true
     },
     brand:{
         type:String,

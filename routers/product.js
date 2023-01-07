@@ -13,6 +13,7 @@ router.post("/post", (req, res) => {
     category: req.body.category,
     product: req.body.product, 
   });
+  // Product.findOne()
   product.save().then((result) => {
     console.log(result);
     res.status(200).json({
@@ -25,7 +26,7 @@ router.post("/post", (req, res) => {
 
 
 router.get("/get", (req, res) => {
-  product.find().then((result) => {
+  Product.find().then((result) => {
     res.status(200).json({
       products: result,
     });

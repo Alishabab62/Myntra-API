@@ -19,7 +19,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use("/school", student);
-app.use("/", product);
+app.use("/myntra", product);
+
 app.use((req, res) => {
   res.status(404).json({
     error: "bad request",

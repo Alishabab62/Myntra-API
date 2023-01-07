@@ -1,6 +1,5 @@
 const mongoose=require('mongoose');
 const Product= new mongoose.Schema({
-    _id:mongoose.Schema.Types.ObjectId,
     imageLink:{
         type:String,
         required:true,
@@ -26,5 +25,5 @@ const Product= new mongoose.Schema({
         required:true
     }
 })
-
+mongoose.set('strictQuery', false);
 module.exports=mongoose.model("Products",Product)

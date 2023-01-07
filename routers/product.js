@@ -11,7 +11,7 @@ router.post("/post", (req, res) => {
     name: req.body.name,
     price: req.body.price,
     category: req.body.category,
-    product: req.body.product,
+    product: req.body.product, 
   });
   product.save().then((result) => {
     console.log(result);

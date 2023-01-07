@@ -3,7 +3,7 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const Product = require("../models/product");
 
-router.post("/post", (req, res) => {
+router.post("/post", async (req, res) => {
   const product = new Product({
     _id: new mongoose.Types.ObjectId(),
     imageLink: req.body.imageLink,
@@ -13,15 +13,23 @@ router.post("/post", (req, res) => {
     category: req.body.category,
     product: req.body.product, 
   });
-  // Product.findOne()
-  product.save().then((result) => {
-    console.log(result);
-    res.status(200).json({
-      success: true,
+  const existingProduct= await Product.findOne({imageLink:req.body.imageLink});
+  if(!(existingProduct)){
+    product.save().then((result) => {
+      console.log(result);
+      res.status(200).json({
+        success: true,
+      });
+    }).catch((err)=>{
+      console.log(err)
     });
-  }).catch((err)=>{
-    console.log(err)
-  });
+  }
+  else{
+    res.status(404).json({
+      message:"Alreay Present"
+    })
+  }
+ 
 });
 
 

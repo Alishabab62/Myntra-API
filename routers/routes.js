@@ -31,23 +31,28 @@ router.delete("/faculty/:id", (req, res) => {
   });
 });
 
-router.post("/student", (req, res) => {
+router.post("/student", async (req, res) => {
   const student = new Student({
     _id: new mongoose.Types.ObjectId(),
     name: req.body.name,
     phone: req.body.phone,
   });
-  student
-    .save()
-    .then((result) => {
-      console.log(result);
-      res.status(200).json({
-        success: true,
+  const existingUser = await Student.findOne({ phone: req.body.phone });
+  if (!existingUser) {
+    student
+      .save()
+      .then((result) => {
+        console.log(result);
+        res.status(200).json({
+          success: true,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
       });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  } else {
+    console.log(req.body);
+  }
 });
 
 module.exports = router;

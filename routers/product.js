@@ -21,7 +21,7 @@ router.post("/post", async (req, res) => {
         success: true,
       });
     }).catch((err)=>{
-      console.log(err)
+      console.log(err) 
     });
   }
   else{

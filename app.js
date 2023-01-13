@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 
 app.use("/school", student);
 app.use("/myntra", product);
-app.use("/myntra", addToBag)
+app.use("/myntra", addToBag);
 
 app.use((req, res) => {
   res.status(404).json({

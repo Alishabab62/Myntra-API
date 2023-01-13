@@ -1,14 +1,11 @@
 const mongoose = require("mongoose");
 const AddToBag = new mongoose.Schema({
-  userId: {
+  user: {
     type: Number,
-    required: true,
-    unique: true,
   },
   imageLink: {
     type: String,
-    required: true,
-    unique: true,
+    unique:true,
   },
   brand:{
     type:String,
@@ -26,4 +23,4 @@ const AddToBag = new mongoose.Schema({
 
 
 mongoose.set("strictQuery",false);
-module.exports = mongoose.model("Addtobag" , AddToBag); 
+module.exports = mongoose.model("AddToBag" , AddToBag); 

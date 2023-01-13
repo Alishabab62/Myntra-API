@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
-const AddToBag = require("../models/Addtobag");
+const AddToBag = require("../models/addtobag");
 
 router.post("/addtobag", async (req, res) => {
   const addToBag = new AddToBag({

@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const student = require("./routers/routes");
 const product = require("./routers/product");
+const addToBag = require("./routers/addtobag");
 const mongoose = require("mongoose");
 mongoose
   .connect(
@@ -20,6 +21,7 @@ app.use(bodyParser.json());
 
 app.use("/school", student);
 app.use("/myntra", product);
+app.use("/myntra", addToBag)
 
 app.use((req, res) => {
   res.status(404).json({

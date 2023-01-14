@@ -24,8 +24,10 @@ router.post("/addtobag", async (req, res) => {
     });
 });
 
-router.get("/addtobag/get", async (req, res) => {
-  AddToBag.find({ userId: req.params.userId })
+// api for get product
+
+router.get("/addtobag/get/:user", async (req, res) => {
+  AddToBag.find({ user: req.params.user })
     .then((result) => {
       console.log(result);
       res.status(200).json({ message: result });
@@ -40,16 +42,17 @@ router.get("/addtobag/get", async (req, res) => {
 
 // api for delete
 
-router.delete("/addtobag/update/:user/:product", (req, res) => {
-  AddToBag.remove({ userId: req.params.user }, { _id: req.params.product })
+router.post("/addtobag/delete", async (req, res) => {
+  console.log(req)
+ AddToBag.findOneAndRemove({ user : req.body.user } && { _id : req.body.product })
     .then((result) => {
-      console.log("hello");
+      console.log("hello succes");
       res.status(200).json({
         success: result,
       });
     })
     .catch((err) => {
-      console.log(err);
+      console.log("hello");
       res.status(404).json({
         message: err,
       });

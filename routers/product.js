@@ -33,8 +33,8 @@ router.post("/post", async (req, res) => {
 });
 
 
-router.get("/get", (req, res) => {
-  Product.find().then((result) => {
+router.get("/get/:cat", (req, res) => {
+  Product.find({product:req.params.cat}).then((result) => {
     res.status(200).json({
       products: result,
     });

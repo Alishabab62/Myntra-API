@@ -18,7 +18,9 @@ mongoose
   });
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+  origin:"https://myntraapi-5zfq.onrender.com"
+}));
 
 app.use("/school", student);
 app.use("/myntra", product);

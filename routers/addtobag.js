@@ -12,7 +12,7 @@ router.post("/addtobag", async (req, res) => {
     productName: req.body.productName,
     price: req.body.price,
   });
-  addToBag
+await  addToBag
     .save()
     .then((result) => {
       res.status(200).json({
@@ -27,7 +27,7 @@ router.post("/addtobag", async (req, res) => {
 // api for get product
 
 router.get("/addtobag/get/:user", async (req, res) => {
-  AddToBag.find({ user: req.params.user })
+await  AddToBag.find({ user: req.params.user })
     .then((result) => {
       console.log(result);
       res.status(200).json({ message: result });
@@ -43,8 +43,8 @@ router.get("/addtobag/get/:user", async (req, res) => {
 // api for delete
 
 router.post("/addtobag/delete", async (req, res) => {
-  console.log(req)
- AddToBag.findOneAndRemove({ user : req.body.user } && { _id : req.body.product })
+  
+ await AddToBag.findOneAndRemove({ user : req.body.user } && { _id : req.body.product })
     .then((result) => {
       console.log("hello succes");
       res.status(200).json({

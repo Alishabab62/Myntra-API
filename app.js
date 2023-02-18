@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const student = require("./routers/routes");
 const product = require("./routers/product");
 const addToBag = require("./routers/addtobag");
+const address = require("./routers/address");
 const mongoose = require("mongoose");
 mongoose
   .connect(
@@ -23,6 +24,7 @@ app.use(cors());
 app.use("/school", student);
 app.use("/myntra", product);
 app.use("/myntra", addToBag);
+app.use("/myntra", address);
 
 app.use((req, res) => {
   res.status(404).json({
